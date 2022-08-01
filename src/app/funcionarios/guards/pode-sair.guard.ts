@@ -3,19 +3,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ConfirmarSaidaComponent } from '../components/confirmar-saida/confirmar-saida.component';
-import { FuncionarioComponent } from '../pages/funcionario/funcionario.component';
+import { EditarFuncionarioComponent } from '../components/editar-funcionario/editar-funcionario.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PodeSairGuard implements CanDeactivate<FuncionarioComponent> {
+export class PodeSairGuard implements CanDeactivate<EditarFuncionarioComponent> {
 
   constructor(
     private dialog: MatDialog
   ) {}
 
   canDeactivate(
-    component: FuncionarioComponent, // representa o componente que ele está inserido
+    component: EditarFuncionarioComponent, // representa o componente que ele está inserido
     currentRoute: ActivatedRouteSnapshot, // a partir dele conseguimos acessar o valor dos parâmetros
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { ConfirmarDelecaoComponent } from '../../components/confirmar-delecao/confirmar-delecao.component';
+import { EditarFuncionarioComponent } from '../../components/editar-funcionario/editar-funcionario.component';
 import { FormFuncionarioComponent } from '../../components/form-funcionario/form-funcionario.component';
 import { Funcionario } from '../../models/funcionario';
 import { FuncionarioService } from '../../services/funcionario.service';
@@ -124,5 +125,12 @@ export class ListarFuncionariosComponent implements OnInit {
         this.recuperarFuncionarios()
       }
     )
+  }
+  dialogEditar(funcionario: Funcionario) {
+    this.dialog.open(EditarFuncionarioComponent, {data:funcionario})
+    .afterClosed()
+    .subscribe(()=> {
+      this.recuperarFuncionarios()
+    })
   }
 }
