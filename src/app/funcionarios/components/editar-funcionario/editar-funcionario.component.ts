@@ -1,23 +1,24 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CargoServiceService } from 'src/app/cargos/service/cargo-service.service';
-import { ConfirmarDelecaoComponent } from '../../components/confirmar-delecao/confirmar-delecao.component';
 import { Cargo } from '../../models/cargo';
 import { Funcionario } from '../../models/funcionario';
+import { ListarFuncionariosComponent } from '../../pages/listar-funcionarios/listar-funcionarios.component';
 import { FuncionarioService } from '../../services/funcionario.service';
+import { ConfirmarDelecaoComponent } from '../confirmar-delecao/confirmar-delecao.component';
 
 @Component({
-  selector: 'app-funcionario',
-  templateUrl: './funcionario.component.html',
-  styleUrls: ['./funcionario.component.css']
+  selector: 'app-editar-funcionario',
+  templateUrl: './editar-funcionario.component.html',
+  styleUrls: ['./editar-funcionario.component.css']
 })
-export class FuncionarioComponent implements OnInit {
+export class EditarFuncionarioComponent implements OnInit {
 
   cargos!: Cargo[]
   funcionario!: Funcionario
@@ -42,19 +43,18 @@ export class FuncionarioComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router, // serve para fazer o redirecionamento entre as páginas do app pelo ts
     private title: Title,
-    private cargoService: CargoServiceService
+    private cargoService: CargoServiceService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<ListarFuncionariosComponent>
   ) { }
 
   ngOnInit(): void {
     // let idFuncionario = this.route.snapshot.paramMap.get('idFuncionario')
-    this.route.paramMap.subscribe(
-      (params) => {
-        let idFuncionario = parseInt(params.get('idFuncionario') ?? '0')
-        this.recuperarFuncionario(idFuncionario)
-      }
-    )
     this.title.setTitle('Funcionario Service')
+    this.funcionario = this.data
+    this.testeRecuperarFunc()
     this.pegarTodosOsCargos()
+    console.log(this.data)
   }
 
   recuperarFuncionario(id: number): void {
@@ -186,4 +186,14 @@ export class FuncionarioComponent implements OnInit {
       }
     )
   }
+testeRecuperarFunc() {
+  this.formFuncionario.setValue({
+    nome: this.funcionario.nome,
+    email: this.funcionario.email,
+    foto: '',
+    cargo: this.funcionario.cargo.idCargo
+  }) 
 }
+
+}
+

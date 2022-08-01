@@ -20,12 +20,13 @@
 }
 
 main {
-  display: grid;
+  display: flex;
   grid-template-rows: 1fr;
-  grid-template-columns: 450px 1fr;
+  grid-template-columns: 500px 1fr;
   padding: 16px;
   gap: 16px;
   box-sizing: border-box;
+  float: left;
 }
 
 table {
@@ -40,4 +41,32 @@ table {
   position: fixed;
   right: 16px;
   bottom: 16px;
+}
+
+@media (max-width: 850px) {
+  #lateral {
+    height: 100%;
+    margin: none;
+    position: fixed;
+  }
+}
+
+@media (max-width: 850px) {
+  #lateral {
+    width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  #lateral, #lateral h2  {
+    height: 0;
+    width: 0;
+    font-size: 0%;
+  }
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
