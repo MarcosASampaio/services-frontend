@@ -1,0 +1,8 @@
+@media (max-width: 600px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

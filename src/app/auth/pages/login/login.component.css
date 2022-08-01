@@ -30,6 +30,14 @@
 re-captcha {
   margin-bottom: 20px;
 }
+@media (max-width: 850px) {
+  .image-container {
+    background-size: 300px;
+  }
+  .form-container {
+    border: none;
+  }
+}
 
 
 

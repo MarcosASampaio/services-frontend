@@ -1,8 +1,9 @@
 .container {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 120px);
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 100px 1fr;
+  height: 100%;
 }
 
 #lateral {
@@ -10,6 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
 }
 
 #lateral h2 {
@@ -27,6 +29,7 @@ main {
   gap: 16px;
   box-sizing: border-box;
   float: left;
+  height: 100%;
 }
 
 table {
@@ -43,30 +46,12 @@ table {
   bottom: 16px;
 }
 
-@media (max-width: 850px) {
-  #lateral {
-    height: 100%;
-    margin: none;
-    position: fixed;
-  }
-}
-
-@media (max-width: 850px) {
-  #lateral {
-    width: 100px;
-  }
-}
-
 @media (max-width: 600px) {
-  #lateral, #lateral h2  {
-    height: 0;
-    width: 0;
-    font-size: 0%;
+  #lateral {
+    display: none;
   }
-  main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  table {
+    margin-left: 50px;
   }
 
 }

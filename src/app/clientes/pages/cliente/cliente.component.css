@@ -41,4 +41,12 @@
     right: 16px;
     bottom: 16px;
   }
+  @media (max-width: 850px) {
+    table {
+      position: relative;
+      right: 450px;
+      width: 100%;
+    }
+  }
+
   

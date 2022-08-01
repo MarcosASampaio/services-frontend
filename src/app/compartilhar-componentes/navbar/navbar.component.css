@@ -6,3 +6,8 @@ mat-toolbar-row {
   .separador {
     flex-grow: 1;
   }
+  @media (max-width: 600px) {
+    mat-toolbar-row {
+      width: 100%;
+    }
+  }
