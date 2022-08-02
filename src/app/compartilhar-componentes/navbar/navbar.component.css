@@ -11,3 +11,7 @@ mat-toolbar-row {
       width: 100%;
     }
   }
+
+  #dados {
+    padding: 15px;
+  }

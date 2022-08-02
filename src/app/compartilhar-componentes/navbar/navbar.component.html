@@ -2,8 +2,13 @@
   <mat-toolbar-row>
     <h1> Services </h1>
     <span class="separador"></span>
-    <p>{{authService.emailToken()}}</p>
+    
     <button mat-button matTooltip="Funcionários" [matMenuTriggerFor]="menuFuncionarios">Funcionários</button>
+    <button mat-icon-button [matMenuTriggerFor]="dadosUser"><mat-icon>person</mat-icon></button>
+    <mat-menu #dadosUser class="dadosUser">
+      <p id="dados">Login: {{authService.emailToken()}}</p>
+      <p id="dados">Seu token expira em: {{ expiracaoDataToken | date: "dd/MM/yyyy | HH:mm:ss" }}</p>
+    </mat-menu>
     <mat-menu #menuFuncionarios="matMenu">
       <button
         mat-menu-item

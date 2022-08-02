@@ -9,6 +9,8 @@ import { Funcionario } from 'src/app/funcionarios/models/funcionario';
 })
 export class NavbarComponent implements OnInit {
 
+  tempo!: Date
+  expiracaoDataToken!: Date
   funcionario: Funcionario[] = []
 
   constructor(
@@ -16,6 +18,17 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.dataDeExpiracaoToken()
   }
   
+  dataDeExpiracaoToken() {
+    this.expiracaoDataToken = this.authService.dataDeExpiracaoToken() 
+
+    const data = new Date().getDate()
+
+    const datasub = this.expiracaoDataToken.getDate() - data
+
+    this.tempo = new Date(datasub)
+    console.log(this.tempo)
+  }
 }

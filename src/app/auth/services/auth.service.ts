@@ -80,4 +80,8 @@ export class AuthService {
     return this.jwt.decodeToken(token).sub
   }
   
+  dataDeExpiracaoToken(): Date {
+    const token = this.recuperarToken() as string
+    return this.jwt.getTokenExpirationDate(token) as Date
+  }
 }
