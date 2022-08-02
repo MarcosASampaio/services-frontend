@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
 import { Cliente } from 'src/app/funcionarios/models/cliente';
 import { DeletarClienteComponent } from '../../componentes/deletar-cliente/deletar-cliente.component';
 import { EditarClienteComponent } from '../../componentes/editar-cliente/editar-cliente.component';
@@ -28,7 +29,8 @@ export class ClienteComponent implements OnInit {
     private fb: FormBuilder,
     private clienteService: ClienteService,
     private dialog: MatDialog,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar, 
+    private title: Title
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class ClienteComponent implements OnInit {
         this.clientes = client
       }
     )
+    this.title.setTitle('Lista de Clientes')
   }
 
   deletarCliente(id: number) {
