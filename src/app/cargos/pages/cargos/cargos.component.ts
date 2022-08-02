@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Cargo } from 'src/app/funcionarios/models/cargo';
 import { CadastrarCargoComponent } from '../../components/cadastrar-cargo/cadastrar-cargo.component';
@@ -26,6 +27,7 @@ export class CargosComponent implements OnInit {
     public authService: AuthService,
     private dialog: MatDialog,
     private snackbar: MatSnackBar,
+    private title: Title
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class CargosComponent implements OnInit {
         this.cargo = carg
       }
     )
+    this.title.setTitle('Lista de Cargos')
   }
 
   deletarCargo(id: number | undefined) {
